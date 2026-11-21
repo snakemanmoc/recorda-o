@@ -17,10 +17,13 @@
 </head>
 <body>
 
-  <!-- ===== CANVAS DE BOLHAS INTERATIVAS ===== -->
+  <!-- ===== 1. CAMADA DE FUNDO (CÉU) ===== -->
+  <div class="bg-sky" aria-hidden="true"></div>
+
+  <!-- ===== 2. CAMADA DE BOLHAS INTERATIVAS ===== -->
   <canvas id="bubblesCanvas" aria-hidden="true"></canvas>
 
-  <!-- ===== NAVBAR ===== -->
+  <!-- ===== 3. CONTEÚDO (acima de tudo) ===== -->
   <header class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="#inicio" class="logo">🫧 Minha Jornada</a>
@@ -39,7 +42,6 @@
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
   <section class="hero" id="inicio">
     <div class="container hero-content">
       <p class="hero-subtitle">Formatura • Ensino Médio • 2025</p>
@@ -50,12 +52,9 @@
       </p>
       <a href="#timeline" class="btn btn-primary">Ver Minha Trajetória ↓</a>
     </div>
-    <div class="scroll-indicator">
-      <span></span>
-    </div>
+    <div class="scroll-indicator"><span></span></div>
   </section>
 
-  <!-- ===== INTRO ===== -->
   <section class="intro" id="intro">
     <div class="container">
       <p class="section-tag">Apresentação</p>
@@ -82,7 +81,6 @@
     </div>
   </section>
 
-  <!-- ===== TIMELINE — 3 FASES ===== -->
   <section class="timeline-section" id="timeline">
     <div class="container">
       <p class="section-tag">Memórias Escolares</p>
@@ -94,7 +92,6 @@
 
       <div class="timeline">
 
-        <!-- ===== FASE 1 — 1º ao 5º ANO ===== -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
@@ -117,7 +114,6 @@
           </div>
         </div>
 
-        <!-- ===== FASE 2 — 6º ao 9º ANO ===== -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
@@ -141,7 +137,6 @@
           </div>
         </div>
 
-        <!-- ===== FASE 3 — 1º ao 3º ANO EM ===== -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card highlight">
@@ -169,7 +164,6 @@
     </div>
   </section>
 
-  <!-- ===== GALERIA ===== -->
   <section class="galeria" id="galeria">
     <div class="container">
       <p class="section-tag">Evidências Visuais</p>
@@ -205,7 +199,6 @@
     </div>
   </section>
 
-  <!-- ===== CURIOSIDADES ===== -->
   <section class="curiosidades" id="curiosidades">
     <div class="container">
       <p class="section-tag">Causos e Desafios</p>
@@ -236,7 +229,6 @@
     </div>
   </section>
 
-  <!-- ===== MENSAGEM FINAL ===== -->
   <section class="mensagem" id="mensagem">
     <div class="container mensagem-box">
       <p class="section-tag">Encerramento</p>
@@ -255,7 +247,6 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
       <p>Feito com 💙 por <strong>[Seu Nome]</strong> • Projeto de Programação Web</p>
@@ -265,7 +256,6 @@
 
   <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
 
-  <!-- ===== LIGHTBOX ===== -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightboxClose">&times;</span>
     <img src="" alt="Imagem ampliada" id="lightboxImg" />

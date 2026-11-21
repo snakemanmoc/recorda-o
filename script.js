@@ -4,13 +4,35 @@
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log(
+    "%c🫧 Minha Jornada Escolar — Frutiger Aero Edition 🫧",
+    "color:#03A9F4;font-size:15px;font-weight:bold;padding:6px;"
+  );
+
+  /* =======================================================
+     DIAGNÓSTICO — verifica se o fundo está carregado
+  ======================================================= */
+  const bgSky = document.querySelector(".bg-sky");
+  if (bgSky) {
+    const style = getComputedStyle(bgSky);
+    console.log("✅ .bg-sky encontrado");
+    console.log("🎨 background-color:", style.backgroundColor);
+    console.log("🖼️ background-image:", style.backgroundImage.slice(0, 80) + "...");
+    console.log("📐 z-index:", style.zIndex);
+  } else {
+    console.error("❌ .bg-sky NÃO encontrado no HTML!");
+  }
 
   /* =======================================================
      1. CANVAS DE BOLHAS INTERATIVAS
   ======================================================= */
   const canvas = document.getElementById("bubblesCanvas");
-  const ctx = canvas.getContext("2d");
+  if (!canvas) {
+    console.error("❌ Canvas #bubblesCanvas não encontrado!");
+    return;
+  }
 
+  const ctx = canvas.getContext("2d");
   let bubbles = [];
   const mouse = { x: -9999, y: -9999 };
 
@@ -22,9 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", resizeCanvas);
 
   class Bubble {
-    constructor() {
-      this.reset(true);
-    }
+    constructor() { this.reset(true); }
 
     reset(initial = false) {
       this.x = Math.random() * canvas.width;
@@ -36,14 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
       this.wobble = Math.random() * Math.PI * 2;
       this.wobbleSpeed = Math.random() * 0.02 + 0.008;
       this.opacity = Math.random() * 0.4 + 0.35;
-      this.hue = Math.random() * 60 + 175; // azul → ciano
+      this.hue = Math.random() * 60 + 175;
       this.popped = false;
       this.popTime = 0;
       this.scale = 1;
     }
 
     update() {
-      // Fase de estouro
       if (this.popped) {
         this.popTime++;
         this.scale = Math.max(0, 1 - this.popTime * 0.09);
@@ -51,12 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Movimento vertical + oscilação lateral
       this.y -= this.speed;
       this.wobble += this.wobbleSpeed;
       this.x += Math.sin(this.wobble) * 0.55;
 
-      // Repulsão do mouse/dedo
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -68,14 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
         this.y += (dy / dist) * force * 4.5;
       }
 
-      // Reseta ao sair da tela
       if (this.y + this.r < -40) this.reset();
       if (this.x < -60) this.x = canvas.width + 60;
       if (this.x > canvas.width + 60) this.x = -60;
     }
 
     draw() {
-      // Anel expansivo ao estourar
       if (this.popped && this.popTime > 0 && this.popTime < 12) {
         const progress = this.popTime / 12;
         ctx.beginPath();
@@ -86,17 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (this.scale <= 0) return;
-
       const r = this.r * this.scale;
 
-      // Corpo principal com gradiente (efeito vidro)
       const gradient = ctx.createRadialGradient(
-        this.x - r * 0.3,
-        this.y - r * 0.35,
-        r * 0.1,
-        this.x,
-        this.y,
-        r
+        this.x - r * 0.3, this.y - r * 0.35, r * 0.1,
+        this.x, this.y, r
       );
       gradient.addColorStop(0, `hsla(${this.hue}, 100%, 97%, ${this.opacity})`);
       gradient.addColorStop(0.4, `hsla(${this.hue}, 100%, 78%, ${this.opacity * 0.7})`);
@@ -108,18 +117,15 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      // Borda fina brilhante
       ctx.strokeStyle = `hsla(${this.hue}, 100%, 90%, ${this.opacity * 0.85})`;
       ctx.lineWidth = 1.3;
       ctx.stroke();
 
-      // Reflexo principal (highlight)
       ctx.beginPath();
       ctx.arc(this.x - r * 0.32, this.y - r * 0.36, r * 0.28, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity * 0.95})`;
       ctx.fill();
 
-      // Reflexo pequeno (para dar mais realismo)
       ctx.beginPath();
       ctx.arc(this.x + r * 0.35, this.y + r * 0.3, r * 0.12, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity * 0.5})`;
@@ -140,17 +146,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Quantidade adaptativa de bolhas
   const bubbleCount = window.innerWidth < 768 ? 16 : 28;
   for (let i = 0; i < bubbleCount; i++) bubbles.push(new Bubble());
+  console.log(`✅ ${bubbleCount} bolhas criadas`);
 
-  // Loop de animação
   function animateBubbles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    bubbles.forEach((b) => {
-      b.update();
-      b.draw();
-    });
+    bubbles.forEach((b) => { b.update(); b.draw(); });
     requestAnimationFrame(animateBubbles);
   }
   animateBubbles();
@@ -168,30 +170,20 @@ document.addEventListener("DOMContentLoaded", () => {
     mouse.y = -9999;
   });
 
-  window.addEventListener(
-    "touchmove",
-    (e) => {
-      if (e.touches[0]) {
-        mouse.x = e.touches[0].clientX;
-        mouse.y = e.touches[0].clientY;
-      }
-    },
-    { passive: true }
-  );
+  window.addEventListener("touchmove", (e) => {
+    if (e.touches[0]) {
+      mouse.x = e.touches[0].clientX;
+      mouse.y = e.touches[0].clientY;
+    }
+  }, { passive: true });
 
   window.addEventListener("touchend", () => {
     mouse.x = -9999;
     mouse.y = -9999;
   });
 
-  // Clique/tap → estourar bolhas atingidas
   window.addEventListener("click", (e) => {
-    // Ignora cliques em elementos interativos
-    if (
-      e.target.closest(
-        "a, button, .menu-toggle, [data-lightbox], .timeline-card, .card, .stat, .galeria-item, .mensagem-box"
-      )
-    ) {
+    if (e.target.closest("a, button, .menu-toggle, [data-lightbox], .timeline-card, .card, .stat, .galeria-item, .mensagem-box")) {
       return;
     }
     bubbles.forEach((b) => {
@@ -200,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =======================================================
-     3. NAVBAR — sombra ao rolar + botão voltar ao topo
+     3. NAVBAR — sombra ao rolar + back to top
   ======================================================= */
   const navbar = document.getElementById("navbar");
   const backToTop = document.getElementById("backToTop");
@@ -238,40 +230,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =======================================================
-     5. REVELAÇÃO AO ROLAR (IntersectionObserver)
+     5. REVELAÇÃO AO ROLAR
   ======================================================= */
-  const revealElements = document.querySelectorAll(
-    ".timeline-item, .card, .galeria-item"
-  );
-
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
+  const revealElements = document.querySelectorAll(".timeline-item, .card, .galeria-item");
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
   revealElements.forEach((el) => revealObserver.observe(el));
 
   /* =======================================================
      6. CONTADOR ANIMADO
   ======================================================= */
   const statNumbers = document.querySelectorAll(".stat h3[data-count]");
-
   const animateCount = (el) => {
     const target = el.dataset.count;
     if (target === "∞") return;
-
     const finalValue = parseInt(target, 10);
     let current = 0;
     const duration = 1400;
     const stepTime = Math.max(10, duration / finalValue);
-
     const timer = setInterval(() => {
       current++;
       el.textContent = current;
@@ -282,18 +264,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }, stepTime);
   };
 
-  const statsObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
   statNumbers.forEach((num) => statsObserver.observe(num));
 
   /* =======================================================
@@ -320,19 +298,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   lightboxClose.addEventListener("click", closeLightbox);
-
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) closeLightbox();
   });
-
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && lightbox.classList.contains("active")) {
-      closeLightbox();
-    }
+    if (e.key === "Escape" && lightbox.classList.contains("active")) closeLightbox();
   });
 
   /* =======================================================
-     8. SCROLL SUAVE com offset da navbar
+     8. SCROLL SUAVE com offset
   ======================================================= */
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
@@ -342,23 +316,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target) {
           e.preventDefault();
           const offset = 70;
-          const top =
-            target.getBoundingClientRect().top + window.scrollY - offset;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top, behavior: "smooth" });
         }
       }
     });
   });
 
-  /* =======================================================
-     9. LOG no console
-  ======================================================= */
-  console.log(
-    "%c🫧 Minha Jornada Escolar — Frutiger Aero Edition 🫧",
-    "color:#03A9F4;font-size:15px;font-weight:bold;padding:6px;"
-  );
-  console.log(
-    "%cClique nas bolhas do fundo para estourá-las! 💧",
-    "color:#00BCD4;font-size:12px;"
-  );
+  console.log("%c💧 Clique nas bolhas do fundo para estourá-las!", "color:#00BCD4;font-size:12px;");
 });
