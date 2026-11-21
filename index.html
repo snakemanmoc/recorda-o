@@ -3,30 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Minha trajetória escolar — do Jardim de Infância à conclusão do Ensino Médio." />
+  <meta name="description" content="Minha trajetória escolar — 1º ao 5º ano, 6º ao 9º ano e Ensino Médio." />
   <title>Minha Jornada Escolar | Formatura 2025</title>
 
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ================= NAVBAR ================= -->
+  <!-- ===== CANVAS DE BOLHAS INTERATIVAS ===== -->
+  <canvas id="bubblesCanvas" aria-hidden="true"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
   <header class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="#inicio" class="logo">✦ Minha Jornada</a>
+      <a href="#inicio" class="logo">🫧 Minha Jornada</a>
       <nav>
         <ul class="nav-links" id="navLinks">
           <li><a href="#inicio">Início</a></li>
-          <li><a href="#timeline">Linha do Tempo</a></li>
+          <li><a href="#timeline">3 Fases</a></li>
           <li><a href="#galeria">Galeria</a></li>
           <li><a href="#curiosidades">Curiosidades</a></li>
-          <li><a href="#mensagem">Mensagem Final</a></li>
+          <li><a href="#mensagem">Mensagem</a></li>
         </ul>
       </nav>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
@@ -35,15 +39,14 @@
     </div>
   </header>
 
-  <!-- ================= HERO / INÍCIO ================= -->
+  <!-- ===== HERO ===== -->
   <section class="hero" id="inicio">
-    <div class="hero-overlay"></div>
     <div class="container hero-content">
       <p class="hero-subtitle">Formatura • Ensino Médio • 2025</p>
       <h1 class="hero-title">Minha Jornada<br />Escolar</h1>
       <p class="hero-text">
-        Do Jardim de Infância ao 3º ano do Ensino Médio — uma história de
-        amizades, desafios, descobertas e memórias que levarei para a vida inteira.
+        Três grandes fases, uma vida inteira de memórias.
+        Do primeiro dia de aula à beca da formatura — cada fase me transformou.
       </p>
       <a href="#timeline" class="btn btn-primary">Ver Minha Trajetória ↓</a>
     </div>
@@ -52,126 +55,113 @@
     </div>
   </section>
 
-  <!-- ================= INTRO ================= -->
+  <!-- ===== INTRO ===== -->
   <section class="intro" id="intro">
     <div class="container">
       <p class="section-tag">Apresentação</p>
-      <h2 class="section-title">Uma vida inteira em <span>fases</span></h2>
+      <h2 class="section-title">Uma vida em <span>3 fases</span></h2>
       <p class="intro-text">
         Meu nome é <strong>[Seu Nome]</strong> e este site é um tributo a cada
-        etapa que vivi dentro da escola. Cada foto, cada relato e cada detalhe
-        aqui representam não só o que aprendi nos livros, mas também quem me
-        tornei ao longo desses anos.
+        etapa que vivi dentro da escola. Cada fase tem suas cores, suas
+        histórias e seus aprendizados — e todas juntas construíram quem eu sou.
       </p>
       <div class="stats">
         <div class="stat">
-          <h3 data-count="15">0</h3>
-          <p>Anos de escola</p>
+          <h3 data-count="3">0</h3>
+          <p>Grandes fases</p>
         </div>
         <div class="stat">
-          <h3 data-count="3">0</h3>
-          <p>Fases vividas</p>
+          <h3 data-count="12">0</h3>
+          <p>Anos de jornada</p>
         </div>
         <div class="stat">
           <h3 data-count="∞">∞</h3>
-          <p>Amizades eternas</p>
+          <p>Memórias eternas</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= TIMELINE ================= -->
+  <!-- ===== TIMELINE — 3 FASES ===== -->
   <section class="timeline-section" id="timeline">
     <div class="container">
       <p class="section-tag">Memórias Escolares</p>
-      <h2 class="section-title">A Linha do <span>Tempo</span></h2>
+      <h2 class="section-title">Minha Jornada em <span>3 Fases</span></h2>
+      <p class="intro-text" style="margin-bottom: 3rem;">
+        Cada fase teve sua própria magia. Aqui estão as três grandes etapas
+        que construíram quem eu sou hoje.
+      </p>
 
       <div class="timeline">
 
-        <!-- JARDIM DE INFÂNCIA -->
+        <!-- ===== FASE 1 — 1º ao 5º ANO ===== -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-year">Pré-escola • Jardim de Infância</span>
-            <h3>A primeira aventura</h3>
-            <img src="img/foto-jardim.jpg" alt="Foto da época do Jardim de Infância" class="timeline-img" data-lightbox />
+            <span class="timeline-year">Fase 1 • 1º ao 5º ano</span>
+            <h3>Os Primeiros Passos</h3>
+            <img src="img/foto-fund1.jpg" alt="Foto do Fundamental I (1º ao 5º ano)" class="timeline-img" data-lightbox />
             <p>
-              Foi ali que tudo começou. Aprendi a dividir brinquedos, a
-              respeitar os colegas e a chorar menos ao me despedir da minha mãe
-              no portão. Lembro com carinho das tardes de pintura com tinta
-              guache — que quase sempre terminavam com mais tinta no uniforme
-              do que no papel.
+              Foi aqui que tudo começou de verdade. A alfabetização, as primeiras
+              palavras escritas, as tabuadas cantadas em sala e as amizades que
+              nasceram entre um recreio e outro. Aprendi a dividir o lanche, a
+              respeitar os colegas e a descobrir que estudar podia ser divertido.
             </p>
-            <p class="moment">✨ Momento inesquecível: a primeira apresentação de Dia das Mães.</p>
-          </div>
-        </div>
-
-        <!-- FUNDAMENTAL I -->
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-year">Fundamental I • 1º ao 5º ano</span>
-            <h3>Aprender a ler e a sonhar</h3>
-            <img src="img/foto-fund1.jpg" alt="Foto da época do Fundamental I" class="timeline-img" data-lightbox />
             <p>
-              A alfabetização foi mágica: as primeiras palavras escritas, a
-              cartilha, as tabuadas cantadas em sala. Foi nesta fase que fiz
-              meus primeiros amigos de verdade e descobri o prazer de ler
-              histórias em voz alta.
+              As professoras dessa fase guardam um lugar especial na memória —
+              foram elas que me ensinaram a ler, escrever e, principalmente, a
+              acreditar em mim.
             </p>
+            <p class="moment">✨ Momento inesquecível: a primeira vez que li uma frase inteira sozinho(a) em voz alta.</p>
             <p class="moment">🎨 Desafio superado: a primeira feira de ciências — meu vulcão de bicarbonato causou alvoroço!</p>
           </div>
         </div>
 
-        <!-- FUNDAMENTAL II -->
+        <!-- ===== FASE 2 — 6º ao 9º ANO ===== -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-year">Fundamental II • 6º ao 9º ano</span>
-            <h3>Amizades, mudanças e descobertas</h3>
-            <img src="img/foto-fund2.jpg" alt="Foto da época do Fundamental II" class="timeline-img" data-lightbox />
+            <span class="timeline-year">Fase 2 • 6º ao 9º ano</span>
+            <h3>Amizades, Mudanças e Descobertas</h3>
+            <img src="img/foto-fund2.jpg" alt="Foto do Fundamental II (6º ao 9º ano)" class="timeline-img" data-lightbox />
             <p>
-              Fase de transformações! Novos professores, mais responsabilidade,
-              apresentações em grupo (e aquele nervosismo de falar em público).
-              Foi aqui que descobri o que mais gostava de estudar — e também
-              onde passei meus primeiros perrengues com trabalhos de última hora.
+              A adolescência chegou junto com mais responsabilidade. Novos
+              professores, mais matérias, apresentações em grupo e aquele
+              friozinho na barriga antes de falar em público. Foi a fase de
+              descobrir o que eu realmente gostava de estudar — e também de
+              aprender a lidar com prazos e trabalhos de última hora.
+            </p>
+            <p>
+              As amizades se aprofundaram, os grupos se formaram e as risadas
+              nos corredores viraram rotina. Foi aqui que a escola virou, de
+              fato, um segundo lar.
             </p>
             <p class="moment">🎭 Curiosidade: no 8º ano, participei do teatro escolar e descobri que amava o palco.</p>
+            <p class="moment">🤝 Desafio superado: aprender a trabalhar em equipe de verdade — com gente que pensa diferente de mim.</p>
           </div>
         </div>
 
-        <!-- ENSINO MÉDIO -->
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-year">Ensino Médio • 1º ao 3º ano</span>
-            <h3>A reta final</h3>
-            <img src="img/foto-medio.jpg" alt="Foto da época do Ensino Médio" class="timeline-img" data-lightbox />
-            <p>
-              O Ensino Médio foi intenso. Noites estudando para o ENEM, simulados,
-              trabalhos em equipe, o primeiro contato mais sério com a escolha
-              profissional. Mas também foi a fase de amizades que se tornaram
-              irmandade, das risadas nos corredores e das tradições que só a
-              nossa turma entende.
-            </p>
-            <p class="moment">🏆 Desafio superado: o trabalho de conclusão de curso — meses de dedicação que valeram cada segundo.</p>
-          </div>
-        </div>
-
-        <!-- FORMATURA -->
+        <!-- ===== FASE 3 — 1º ao 3º ANO EM ===== -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card highlight">
-            <span class="timeline-year">Formatura • 2025</span>
-            <h3>O fim de um capítulo, o começo de outro</h3>
-            <img src="img/foto-formatura.jpg" alt="Foto da formatura" class="timeline-img" data-lightbox />
+            <span class="timeline-year">Fase 3 • 1º ao 3º ano do Ensino Médio</span>
+            <h3>A Reta Final</h3>
+            <img src="img/foto-medio.jpg" alt="Foto do Ensino Médio (1º ao 3º ano)" class="timeline-img" data-lightbox />
             <p>
-              Vestir a beca, ajustar o capelo, subir ao palco e receber o diploma.
-              Um misto de orgulho e nostalgia. Hoje encerro uma etapa, mas levo
-              comigo tudo o que vivi — e a certeza de que os melhores capítulos
-              ainda estão por vir.
+              O Ensino Médio foi intenso: noites estudando para o ENEM, simulados,
+              trabalhos em equipe e o primeiro contato mais sério com a escolha
+              profissional. A pressão aumentou, mas a união da turma também.
             </p>
-            <p class="moment">💫 Gratidão a cada professor, colega e família que caminhou comigo.</p>
+            <p>
+              Foi a fase em que mais amadureci. Aprendi a administrar o tempo, a
+              lidar com a ansiedade das provas e a valorizar cada momento com os
+              amigos — porque sabíamos que estava acabando. Vestir a beca e subir
+              ao palco foi o fechamento de um ciclo que levarei para sempre
+              comigo.
+            </p>
+            <p class="moment">🏆 Desafio superado: o trabalho de conclusão de curso — meses de dedicação que valeram cada segundo.</p>
+            <p class="moment">💫 Gratidão a cada professor, colega e família que caminhou comigo até aqui.</p>
           </div>
         </div>
 
@@ -179,7 +169,7 @@
     </div>
   </section>
 
-  <!-- ================= GALERIA ================= -->
+  <!-- ===== GALERIA ===== -->
   <section class="galeria" id="galeria">
     <div class="container">
       <p class="section-tag">Evidências Visuais</p>
@@ -188,34 +178,34 @@
 
       <div class="galeria-grid">
         <figure class="galeria-item reveal">
-          <img src="img/foto-jardim.jpg" alt="Jardim de Infância" data-lightbox />
-          <figcaption>Jardim de Infância</figcaption>
+          <img src="img/foto-fund1.jpg" alt="Fase 1 — 1º ao 5º ano" data-lightbox />
+          <figcaption>Fase 1 • 1º ao 5º ano</figcaption>
         </figure>
         <figure class="galeria-item reveal">
-          <img src="img/foto-fund1.jpg" alt="Fundamental I" data-lightbox />
-          <figcaption>Fundamental I</figcaption>
+          <img src="img/foto-fund2.jpg" alt="Fase 2 — 6º ao 9º ano" data-lightbox />
+          <figcaption>Fase 2 • 6º ao 9º ano</figcaption>
         </figure>
         <figure class="galeria-item reveal">
-          <img src="img/foto-fund2.jpg" alt="Fundamental II" data-lightbox />
-          <figcaption>Fundamental II</figcaption>
+          <img src="img/foto-medio.jpg" alt="Fase 3 — Ensino Médio" data-lightbox />
+          <figcaption>Fase 3 • Ensino Médio</figcaption>
         </figure>
         <figure class="galeria-item reveal">
-          <img src="img/foto-medio.jpg" alt="Ensino Médio" data-lightbox />
-          <figcaption>Ensino Médio</figcaption>
-        </figure>
-        <figure class="galeria-item reveal">
-          <img src="img/foto-formatura.jpg" alt="Formatura" data-lightbox />
+          <img src="img/foto-formatura.jpg" alt="Formatura 2025" data-lightbox />
           <figcaption>Formatura 2025</figcaption>
         </figure>
         <figure class="galeria-item reveal">
-          <img src="img/foto-turma.jpg" alt="Turma" data-lightbox />
+          <img src="img/foto-turma.jpg" alt="Minha turma" data-lightbox />
           <figcaption>Minha Turma</figcaption>
+        </figure>
+        <figure class="galeria-item reveal">
+          <img src="img/foto-jardim.jpg" alt="Jardim de Infância" data-lightbox />
+          <figcaption>Antes de tudo: Jardim de Infância</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- ================= CURIOSIDADES ================= -->
+  <!-- ===== CURIOSIDADES ===== -->
   <section class="curiosidades" id="curiosidades">
     <div class="container">
       <p class="section-tag">Causos e Desafios</p>
@@ -246,9 +236,9 @@
     </div>
   </section>
 
-  <!-- ================= MENSAGEM FINAL ================= -->
+  <!-- ===== MENSAGEM FINAL ===== -->
   <section class="mensagem" id="mensagem">
-    <div class="container">
+    <div class="container mensagem-box">
       <p class="section-tag">Encerramento</p>
       <h2 class="section-title">Uma <span>despedida</span>, não um adeus</h2>
       <p class="mensagem-texto">
@@ -261,28 +251,26 @@
         "O futuro pertence àqueles que acreditam na beleza dos seus sonhos."
         <cite>— Eleanor Roosevelt</cite>
       </blockquote>
-      <p class="mensagem-final">Obrigado(a), escola. Obrigado(a), turma. 🎓</p>
+      <p class="mensagem-final">Obrigado(a), escola. Obrigado(a), turma. 🎓🫧</p>
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-      <p>Feito com ❤️ por <strong>[Seu Nome]</strong> • Projeto de Programação Web</p>
+      <p>Feito com 💙 por <strong>[Seu Nome]</strong> • Projeto de Programação Web</p>
       <p>Formatura do Ensino Médio • 2025</p>
     </div>
   </footer>
 
-  <!-- Botão voltar ao topo -->
   <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
 
-  <!-- Lightbox -->
+  <!-- ===== LIGHTBOX ===== -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightboxClose">&times;</span>
     <img src="" alt="Imagem ampliada" id="lightboxImg" />
   </div>
 
-  <!-- JS -->
   <script src="js/script.js"></script>
 </body>
 </html>
