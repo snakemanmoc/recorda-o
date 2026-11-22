@@ -227,6 +227,32 @@
     </div>
   </section>
 
+<!-- ================= REDAÇÕES EM FLASHCARDS ================= -->
+<section class="redacoes" id="redacoes">
+  <div class="container">
+    <p class="section-tag">Minha Coleção</p>
+    <h2 class="section-title">17 Redações em <span>Flashcards</span></h2>
+    <p class="redacoes-hint">Clique em um card para virar e ver o resumo. Depois, em "Ler completa" 🔍</p>
+
+    <div class="flashcards-grid" id="flashcardsGrid">
+      <!-- Cards criados automaticamente pelo JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Modal para ler redação completa -->
+<div class="redacao-modal" id="redacaoModal" role="dialog" aria-modal="true">
+  <div class="redacao-modal-content">
+    <button class="redacao-modal-close" id="redacaoModalClose" aria-label="Fechar">&times;</button>
+    <span class="redacao-modal-tag" id="redacaoModalTag">Redação</span>
+    <h3 class="redacao-modal-titulo" id="redacaoModalTitulo"></h3>
+    <div class="redacao-modal-meta">
+      <span class="redacao-modal-ano" id="redacaoModalAno"></span>
+    </div>
+    <div class="redacao-modal-texto" id="redacaoModalTexto"></div>
+  </div>
+</div>
+
   <footer class="footer">
     <div class="container">
       <p>Feito com 💙 por <strong>José Alexandre</strong> • Projeto de Programação Web</p>
